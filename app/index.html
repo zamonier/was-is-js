@@ -13,6 +13,7 @@
   <!-- endbuild -->
   <!-- build:css(.tmp) styles/main.css -->
   <link rel="stylesheet" href="styles/main.css">
+  <link rel="stylesheet" href="styles/was-is-js.css">
   <!-- endbuild -->
 </head>
 <body>
@@ -28,13 +29,14 @@
   </div>
 
 
-  <div class="jumbotron">
+  <div class="jumbotron" style="height: 661px; width:948px">
     <p><a class="btn btn-lg btn-success" href="#">Splendid!<span class="glyphicon glyphicon-ok"></span></a></p>
 
-    <div class="cf" style="height: 350px; width:540px">
-      <img class="bottom" src="images/1915.jpg" width="530">
-      <img class="top" src="images/2013.jpg" width="530">
+    <div class="cf" style="height: 561px; width:848px">
+      <img class="bottom" src="images/1915.jpg">
+      <img class="top" src="images/2013.jpg">
     </div>
+    <canvas id="canvas" class="top" width="848" height="561"></canvas>
   </div>
 
 </div>
@@ -60,26 +62,6 @@
 <!-- build:js({app,.tmp}) scripts/main.js -->
 <script src="scripts/main.js"></script>
 <!-- endbuild -->
-<style>
-  .cf {
-  position:relative;
-  height:281px;
-  width:450px;
-  margin:0 auto;
-  }
-
-  .cf img {
-  position:absolute;
-  left:0;
-  -webkit-transition: opacity 1s ease-in-out;
-  -moz-transition: opacity 1s ease-in-out;
-  -o-transition: opacity 1s ease-in-out;
-  transition: opacity 1s ease-in-out;
-  }
-
-  .cf img.top:hover {
-  opacity:0;
-  }
-</style>
+<style></style>
 </body>
 </html>
