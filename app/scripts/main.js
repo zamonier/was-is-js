@@ -19,9 +19,11 @@ $(function(){
         var drawSquare = function(x, y, h1) {
             ctx.drawImage(afterImage, x - 0.5 * h1, y - 0.5 * h1, h1, h1, x - 0.5 * h1, y - 0.5 * h1, h1, h1);
         };
-        drawSquare(0, 0.5 * h, h1);
+        drawSquare(0, 0, h1);
         drawSquare(0.5 * w, 0.5 * h, h1);
-        drawSquare(w, 0.5 * h, h1);
+        drawSquare(w, h, h1);
+        drawSquare(w, 0, h1);
+        drawSquare(0, h, h1);
     };
 
     var drawAfterImage4 = function(ctx, afterImage, delta){
@@ -53,7 +55,7 @@ $(function(){
         }
         var afterImage = new Image();
         afterImage.src = afterURL;
-        drawAfterImage4(ctx, afterImage, delta);
+        drawAfterImage3(ctx, afterImage, delta);
         previousDelta = delta;
     };
 
