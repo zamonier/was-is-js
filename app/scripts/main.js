@@ -18,10 +18,30 @@ $(function(){
         var h1 = delta * h * 1.1;
         var drawSquare = function(x, y, h1) {
             ctx.drawImage(afterImage, x - 0.5 * h1, y - 0.5 * h1, h1, h1, x - 0.5 * h1, y - 0.5 * h1, h1, h1);
-        }
+        };
         drawSquare(0, 0.5 * h, h1);
         drawSquare(0.5 * w, 0.5 * h, h1);
         drawSquare(w, 0.5 * h, h1);
+    };
+
+    var drawAfterImage4 = function(ctx, afterImage, delta){
+        var canvas = document.createElement('canvas');
+        canvas.width = afterImage.width;
+        canvas.height = afterImage.height;
+
+        var ctx3 = canvas.getContext('2d');
+        ctx3.drawImage(afterImage, 0, 0);
+        var imageData = ctx3.getImageData(0, 0, canvas.width, canvas.height);
+        var data = imageData.data;
+        for (var i = 0; i < data.length; i += 4) {
+            data[i]     = data[i];
+            data[i + 1] = data[i + 1];
+            data[i + 2] = data[i + 2];
+            data[i + 3] = delta * 255;
+        }
+
+        ctx3.putImageData(imageData, 0,0);
+        ctx.drawImage(canvas, 0, 0);
     };
 
     var draw = function(delta){
@@ -33,7 +53,7 @@ $(function(){
         }
         var afterImage = new Image();
         afterImage.src = afterURL;
-        drawAfterImage3(ctx, afterImage, delta);
+        drawAfterImage4(ctx, afterImage, delta);
         previousDelta = delta;
     };
 
