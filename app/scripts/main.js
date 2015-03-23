@@ -46,6 +46,29 @@ $(function(){
         ctx.drawImage(canvas, 0, 0);
     };
 
+    var drawAfterImage5 = function(ctx, afterImage, delta){
+        var canvas = document.createElement('canvas');
+        canvas.width = afterImage.width;
+        canvas.height = afterImage.height;
+
+        var ctx3 = canvas.getContext('2d');
+        ctx3.drawImage(afterImage, 0, 0);
+        var imageData = ctx3.getImageData(0, 0, canvas.width, canvas.height);
+        var data = imageData.data;
+        for (var i = 0; i < data.length; i += 4) {
+            data[i]     = data[i];
+            data[i + 1] = data[i + 1];
+            data[i + 2] = data[i + 2];
+            if(i % (16) == 0) {
+              var alpha = Math.floor(Math.random() * (255 * delta)) + (delta * 255);
+            }
+            data[i + 3] = alpha;
+        }
+
+        ctx3.putImageData(imageData, 0,0);
+        ctx.drawImage(canvas, 0, 0);
+    };
+
     var draw = function(delta){
         var ctx = document.getElementById('canvas').getContext('2d');
         if(previousDelta || previousDelta > delta){
@@ -55,7 +78,7 @@ $(function(){
         }
         var afterImage = new Image();
         afterImage.src = afterURL;
-        drawAfterImage3(ctx, afterImage, delta);
+        drawAfterImage4(ctx, afterImage, delta);
         previousDelta = delta;
     };
 
